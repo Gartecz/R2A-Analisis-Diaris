@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "date": "2026-07-29",
+  "generated_at": "2026-07-29T18:41:37.552Z",
+  "bot": "R2-A",
+  "status": "normal",
+  "summary": "Dades fresques i jornada parcial positiva: +77,26 USD (+1,9176%) en 13 operacions tancades, sense posicions obertes en el moment de l'anàlisi.",
+  "data_freshness": {
+    "last_sync_at": "2026-07-29T18:40:44.835265+00:00",
+    "age_seconds": 52,
+    "is_stale": false
+  },
+  "metrics": {
+    "balance": 4106.29,
+    "equity": 4106.29,
+    "daily_pnl": 77.26,
+    "daily_return_pct": 1.9176,
+    "closed_operations": 13,
+    "wins": 13,
+    "losses": 0,
+    "win_rate_pct": 100,
+    "open_positions": 0,
+    "floating_pnl": 0,
+    "worst_floating_day": -4.26
+  },
+  "assessment": {
+    "performance": "Les 13 operacions tancades disponibles sumen +77,26 USD. Totes han acabat en positiu segons l'agrupació del dashboard, però una sola jornada no permet extrapolar aquest win rate ni aquest retorn.",
+    "risk": "El pitjor floating registrat avui és de -4,26 USD, aproximadament un 0,10% del balance actual. En el moment de la consulta no hi havia floating ni posicions obertes. Aquesta lectura no substitueix l'avaluació de períodes adversos més llargs.",
+    "execution": "La sincronització tenia 52 segons d'antiguitat i es considerava vigent. La mètrica de spread no està disponible a l'endpoint, de manera que no es pot valorar el cost o la qualitat d'execució mitjançant aquesta dada.",
+    "conclusion": "El funcionament observat fins a aquesta hora és normal i positiu, sense senyals de risc immediat a les mètriques disponibles. Cal mantenir prudència perquè l'informe és parcial i no demostra el comportament futur."
+  },
+  "alerts": [
+    "Informe inicial parcial: l'agent programat l'actualitzarà a les 23:30 d'Europa/Madrid.",
+    "Spread no disponible; l'anàlisi d'execució és incompleta."
+  ],
+  "sources": [
+    "https://dashboard-pied-ten-19.vercel.app/api/analysis-context"
+  ]
+}
