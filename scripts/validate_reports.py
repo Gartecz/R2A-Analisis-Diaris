@@ -4,8 +4,12 @@ import pathlib
 import re
 import sys
 
+from jsonschema import Draft202012Validator, FormatChecker
+
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
+SCHEMA = json.loads((ROOT / "schema" / "analysis.schema.json").read_text(encoding="utf-8"))
+SCHEMA_VALIDATOR = Draft202012Validator(SCHEMA, format_checker=FormatChecker())
 REPORT_PATTERN = re.compile(
     r"^analisis/(?P<year>\d{4})/(?P<month>\d{2})/(?P<date>\d{4}-\d{2}-\d{2})\.json$"
 )
@@ -27,6 +31,12 @@ def validate(path: pathlib.Path) -> None:
         report = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as error:
         fail(path, f"JSON no vàlid: {error}")
+
+    schema_errors = sorted(SCHEMA_VALIDATOR.iter_errors(report), key=lambda error: list(error.path))
+    if schema_errors:
+        error = schema_errors[0]
+        location = ".".join(str(part) for part in error.path) or "<arrel>"
+        fail(path, f"esquema no vàlid a {location}: {error.message}")
 
     required = {
         "schema_version",
