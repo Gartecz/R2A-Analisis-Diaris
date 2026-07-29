@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Gartecz/R2A-Analisis-Diaris/schema/analysis.schema.json",
+  "title": "Informe diari R2-A",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "date",
+    "generated_at",
+    "bot",
+    "status",
+    "summary",
+    "data_freshness",
+    "metrics",
+    "assessment",
+    "alerts",
+    "sources"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "bot": { "const": "R2-A" },
+    "status": {
+      "enum": ["normal", "watch", "alert", "insufficient_data"]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 800
+    },
+    "data_freshness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["last_sync_at", "age_seconds", "is_stale"],
+      "properties": {
+        "last_sync_at": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "age_seconds": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "is_stale": { "type": "boolean" }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "balance",
+        "equity",
+        "daily_pnl",
+        "daily_return_pct",
+        "closed_operations",
+        "wins",
+        "losses",
+        "win_rate_pct",
+        "open_positions",
+        "floating_pnl",
+        "worst_floating_day"
+      ],
+      "properties": {
+        "balance": { "type": ["number", "null"] },
+        "equity": { "type": ["number", "null"] },
+        "daily_pnl": { "type": ["number", "null"] },
+        "daily_return_pct": { "type": ["number", "null"] },
+        "closed_operations": { "type": ["integer", "null"], "minimum": 0 },
+        "wins": { "type": ["integer", "null"], "minimum": 0 },
+        "losses": { "type": ["integer", "null"], "minimum": 0 },
+        "win_rate_pct": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+        "open_positions": { "type": ["integer", "null"], "minimum": 0 },
+        "floating_pnl": { "type": ["number", "null"] },
+        "worst_floating_day": { "type": ["number", "null"] }
+      }
+    },
+    "assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["performance", "risk", "execution", "conclusion"],
+      "properties": {
+        "performance": { "type": "string", "minLength": 1, "maxLength": 1200 },
+        "risk": { "type": "string", "minLength": 1, "maxLength": 1200 },
+        "execution": { "type": "string", "minLength": 1, "maxLength": 1200 },
+        "conclusion": { "type": "string", "minLength": 1, "maxLength": 1200 }
+      }
+    },
+    "alerts": {
+      "type": "array",
+      "maxItems": 20,
+      "items": { "type": "string", "minLength": 1, "maxLength": 300 }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 10,
+      "items": { "type": "string", "format": "uri" }
+    }
+  }
+}
