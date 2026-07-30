@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "week": "2026-W31",
+  "generated_at": "2026-07-30T10:12:27.643231Z",
+  "bot": "R2-A",
+  "status": "insufficient_data",
+  "summary": "Resum automàtic verificat del 27/07–29/07: 1/3 informes diaris disponibles.",
+  "coverage": {
+    "start_date": "2026-07-27",
+    "end_date": "2026-07-29",
+    "expected_daily_reports": 3,
+    "available_daily_reports": 1
+  },
+  "metrics": {
+    "weekly_pnl": 77.26,
+    "closed_operations": 13,
+    "wins": 13,
+    "losses": 0,
+    "win_rate_pct": 100.0,
+    "worst_floating": -4.26,
+    "last_balance": 4106.29,
+    "last_equity": 4106.29
+  },
+  "assessment": {
+    "performance": "El P&L setmanal és la suma dels informes diaris disponibles. No s'estima cap dia absent.",
+    "risk": "El pitjor floating és el mínim registrat als informes disponibles; no representa mètriques no publicades.",
+    "execution": "La qualitat de les dades depèn de la cobertura indicada. Les dades diàries antigues o absents es mantenen com a limitació explícita.",
+    "conclusion": "Informe agregat automàticament a partir dels informes diaris validats, sense enviar ordres ni modificar MT5."
+  },
+  "alerts": [
+    "Falten 2 informe(s) diari(s) del període; el resum setmanal és parcial."
+  ],
+  "sources": [
+    "https://github.com/Gartecz/R2A-Analisis-Diaris"
+  ]
+}
