@@ -1,9 +1,10 @@
-name: Validate daily analyses
+name: Validate analyses
 
 on:
   push:
     paths:
       - "analisis/**/*.json"
+      - "setmanals/**/*.json"
       - "schema/**"
       - "scripts/validate_reports.py"
       - "requirements.txt"
@@ -11,6 +12,7 @@ on:
   pull_request:
     paths:
       - "analisis/**/*.json"
+      - "setmanals/**/*.json"
       - "schema/**"
       - "scripts/validate_reports.py"
       - "requirements.txt"
